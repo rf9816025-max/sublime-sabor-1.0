@@ -1,0 +1,201 @@
+Thought for 4sPayment page readThought for 4sWhatsApp redirect fixedv8Corrigi o redirecionamento do WhatsApp usando `encodeURIComponent` para codificação adequada da mensagem e removendo o delay desnecessário. O sistema agora redireciona imediatamente após limpar o carrinho, com tratamento específico para mobile e desktop.
+
+---
+
+## Prompt Completo do Site Sublime Sabor
+
+**SUBLIME SABOR - E-COMMERCE DE DOCES ARTESANAIS**
+
+Crie uma loja virtual completa e moderna para "Sublime Sabor", uma doceria artesanal brasileira especializada em doces gourmet. O site deve ser responsivo, elegante e funcional.
+
+**IDENTIDADE VISUAL:**
+
+- Paleta de cores: Roxo (`#8A2BE2`), Rosa claro (`#FFC0CB`) e Dourado (`#FFD700`)
+- Estética feminina, delicada e sofisticada
+- Tipografia arredondada e amigável
+- Gradientes suaves entre as cores principais
+- Animações suaves e transições elegantes
+
+
+**ESTRUTURA DO SITE:**
+
+1. **Página Inicial (Home)**
+
+1. Logo "Sublime Sabor" com tipografia elegante
+2. Botão "Explorar Catálogo" em destaque
+3. Cards com diferenciais: "Doces Artesanais", "Entrega Rápida", "Qualidade Premium"
+4. Design hero com gradientes roxo-rosa-dourado
+
+
+
+2. **Catálogo de Produtos**
+
+1. 16 produtos organizados em categorias:
+
+1. Bolos: Bolo no Pote
+2. Mousses: Maracujá, Limão
+3. Doces Especiais: Surpresa de Uva, Surpresa de Morango, Coxinha de Morango, Morango do Amor
+4. Bombons: Bombonzão de Uva, Bombonzão de Morango
+5. Trufas e Brownies: Trufas, Brownie
+6. Sobremesas: Fatias, Cone Trufado, Pudim, Pavê de Abacaxi, Pavê de Morango
+
+
+
+2. Sistema de filtros por categoria
+3. Cards de produtos com:
+
+1. Imagem real do produto
+2. Nome e preço em destaque
+3. Seletor de sabor (para produtos com variações)
+4. Botão "Adicionar ao Carrinho"
+
+
+
+4. Produtos com múltiplos sabores devem ter dropdown de seleção antes de adicionar
+
+
+
+3. **Carrinho de Compras**
+
+1. Lista de produtos adicionados
+2. Controle de quantidade (+/-)
+3. Botão para remover itens
+4. Exibição de sabor selecionado (quando aplicável)
+5. Resumo com subtotal
+6. Botão "Simular Frete" (não "Entrega Grátis")
+7. Botão "Finalizar Pedido"
+
+
+
+4. **Página de Pagamento**
+
+1. Resumo completo do pedido com todos os itens, quantidades e sabores
+2. Calculadora de frete inteligente:
+
+1. Localização da loja: Rua Pará, 174 - Nossa Senhora de Lourdes, Ibirité - MG
+2. Cliente informa apenas CEP e número da casa
+3. Sistema busca endereço completo via API ViaCEP
+4. Calcula distância real usando geolocalização (API Nominatim)
+5. Tabela de preços por distância:
+
+1. 0 a 2.5 km: R$ 6,00
+2. 2.5 a 4.5 km: R$ 7,00
+3. 4.5 a 8 km: R$ 10,00
+4. 8 a 10 km: R$ 14,00
+
+
+
+6. Exibe endereço completo, distância e valor do frete
+
+
+
+3. Informações de pagamento PIX:
+
+1. Chave PIX: 03b07efa-eb25-4089-ae23-db930353e43a
+2. Nome: STEFANY LORRANY
+3. Banco: PicPay
+4. Botão para copiar chave PIX
+
+
+
+4. Botão "Enviar comprovante e receber meu pedido"
+5. Integração com WhatsApp (número: 5531998166454)
+
+
+
+5. **Sistema de Feedbacks**
+
+1. Carrossel automático (rotação a cada 5 segundos)
+2. Navegação manual com setas
+3. Depoimentos com nome, avaliação em estrelas e comentário
+4. Formulário para adicionar novo feedback
+5. Armazenamento local dos feedbacks
+
+
+
+
+
+**FUNCIONALIDADES TÉCNICAS:**
+
+1. **Gerenciamento de Estado (Zustand)**
+
+1. Carrinho de compras persistente
+2. Controle de quantidade
+3. Seleção de sabores
+4. Total calculado dinamicamente
+
+
+
+2. **Integração WhatsApp**
+
+1. Mensagem formatada com:
+
+1. Lista completa de produtos
+2. Sabores selecionados
+3. Quantidades e preços
+4. Subtotal e frete
+5. Endereço de entrega completo
+6. Valor total
+
+
+
+2. Redirecionamento automático (mobile e desktop)
+3. Limpeza do carrinho após envio
+
+
+
+3. **Cálculo de Frete Inteligente**
+
+1. Integração com API ViaCEP para buscar endereço
+2. Integração com Nominatim (OpenStreetMap) para geocodificação
+3. Cálculo de distância usando fórmula de Haversine
+4. Aplicação automática de preço por faixa de distância
+
+
+
+4. **Seleção de Sabores**
+
+1. Produtos com variações (Surpresa, Bombonzão) têm seletor de sabor
+2. Sabor obrigatório antes de adicionar ao carrinho
+3. Exibição do sabor no carrinho e no pedido final
+
+
+
+
+
+**TECNOLOGIAS:**
+
+- Next.js 14+ (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Zustand (gerenciamento de estado)
+- shadcn/ui (componentes)
+- APIs: ViaCEP, Nominatim/OpenStreetMap
+
+
+**DESIGN RESPONSIVO:**
+
+- Mobile-first
+- Breakpoints: sm, md, lg, xl
+- Navegação adaptativa
+- Cards responsivos em grid
+- Formulários otimizados para mobile
+
+
+**ANIMAÇÕES:**
+
+- Fade-in suave em transições
+- Hover effects nos botões e cards
+- Transições de cor em gradientes
+- Loading states durante cálculos
+
+
+**HEADER:**
+
+- Logo "Sublime Sabor"
+- Links: Home, Catálogo, Feedbacks
+- Ícone de carrinho com contador de itens
+- Responsivo com menu mobile
+
+
+Este é um e-commerce completo, funcional e pronto para produção, com todas as integrações necessárias para processar pedidos via WhatsApp e calcular frete automaticamente baseado na localização real do cliente.
