@@ -1,0 +1,653 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #7b2cbf, #f7aef8);
+}
+
+/* TOPO */
+.topo {
+    background-color: #7b2cbf;
+    padding: 25px 0;
+    text-align: center;
+    color: white;
+}
+
+header {
+  position: relative; /* adicionado para posicionar o botão no topo direito */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f2c94c;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Botão Ver Carrinho (topo direito) - adicionado */
+.ver-carrinho {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: linear-gradient(135deg, #7b2cbf, #f7aef8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.ver-carrinho:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* PRODUTOS */
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.produto {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    height: 310px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.produto img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.produto h3 {
+    font-size: 1rem;
+    color: #7b2cbf;
+    margin: 5px 0;
+}
+
+.produto p {
+    font-weight: 600;
+    color: #333;
+    margin: 3px 0;
+}
+
+.produto select {
+    width: 100%;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 6px;
+}
+
+.btn-adicionar {
+    background-color: #f7aef8;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-adicionar:hover {
+    background-color: #f2c94c;
+}
+
+button {
+  background: linear-gradient(135deg, #7b2cbf, #f7aef8);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #f7aef8, #7b2cbf);
+  transform: scale(1.07);
+  box-shadow: 0 6px 15px rgba(123, 44, 191, 0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* CARRINHO */
+.carrinho-container {
+    display: none;
+    background-color: rgba(182, 47, 245, 0.616);
+    padding: 25px;
+    border-radius: 20px;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+#finalizar-pedido {
+    background-color: #25D366;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    bottom: -5px;
+}
+
+#voltar-produtos {
+    background-color: #7b2cbf;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* FRETE */
+.frete-container {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.frete-container input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* PIX */
+.pix-container {
+    margin-top: 20px;
+    background: #f7aef8;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#copiar-pix {
+    background-color: #7b2cbf;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+/* CONFIRMAÇÃO */
+.pedido-confirmado {
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+    color: white;
+}
+
+#voltar-site {
+    background-color: #f2c94c;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Centralizar e ajustar o tamanho da logo */
+header img {
+  display: block;
+  margin: 0 auto;        /* Centraliza horizontalmente */
+  width: 180px;          /* Diminui o tamanho da logo */
+  height: auto;          /* Mantém proporção */
+  border-radius: 0;      /* Remove qualquer borda arredondada */
+  background: transparent; /* Garante fundo transparente */
+}
+
+select {
+  background-color: #ffffff;
+  border: 2px solid #f7aef8;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7b2cbf;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(123, 44, 191, 0.15);
+}
+
+select:hover {
+  border-color: #7b2cbf;
+  box-shadow: 0 3px 10px rgba(123, 44, 191, 0.25);
+  transform: scale(1.03);
+}
+
+select:focus {
+  border-color: #f2c94c;
+  box-shadow: 0 0 8px rgba(242, 201, 76, 0.6);
+}
+
+/* --- Modal (adicionado) --- */
+.modal-carrinho {
+  display: none; /* controlado via JS */
+  position: fixed;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-conteudo {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.modal-conteudo p {
+  color: #222;
+}
+/* --- Ícone do carrinho no topo do carrinho.html --- */
+.topo-carrinho {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.icone-carrinho {
+  width: 70px;      /* tamanho reduzido */
+  height: auto;
+  margin-bottom: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: none;     /* remove qualquer efeito ou desfoque */
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(270deg, #7b2cbf, #f7aef8, #f2c94c);
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- resto do seu CSS original abaixo (sem nenhuma modificação) --- */
+
+/* TOPO */
+.topo {
+    background-color: #7b2cbf;
+    padding: 25px 0;
+    text-align: center;
+    color: white;
+}
+
+header {
+  position: relative;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* ... todo o restante do seu CSS exatamente igual ... */
+/* ====== SELETOR DE SABORES ====== */
+.sabores {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6a1b9a;
+  background: linear-gradient(135deg, #f8e1ff, #fbeaff);
+  border: 2px solid #d180f4;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  appearance: none; /* remove estilo padrão */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%236a1b9a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+/* Hover */
+.sabores:hover {
+  background: linear-gradient(135deg, #f3d3ff, #fce4ff);
+  border-color: #b34ee4;
+  transform: translateY(-2px);
+}
+
+/* Foco (quando o usuário clica no seletor) */
+.sabores:focus {
+  border-color: #7b2cbf;
+  box-shadow: 0 0 0 3px rgba(123,44,191,0.3);
+}
+
+/* Opções internas */
+.sabores option {
+  background-color: #fff;
+  color: #6a1b9a;
+  font-weight: 500;
+}
+/* ====== SELETOR DE SABORES COM EFEITO GLASS ====== */
+.sabores {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6a1b9a;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(123, 44, 191, 0.15);
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%236a1b9a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+.sabores:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+  border-color: #b34ee4;
+}
+
+.sabores:focus {
+  border-color: #7b2cbf;
+  box-shadow: 0 0 8px rgba(123, 44, 191, 0.4);
+}
+
+.sabores option {
+  background-color: #fff;
+  color: #6a1b9a;
+  font-weight: 500;
+  font-size: 14px;
+}
+/* ===== PAGAMENTO ===== */
+.pagamento-container {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  margin: 30px auto;
+  padding: 25px;
+  max-width: 600px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  color: #fff;
+}
+
+.pagamento-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.pix-box {
+  background: rgba(255,255,255,0.2);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.pix-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+#pix-key {
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0,0,0,0.15);
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.pix-note {
+  font-size: 0.9rem;
+  color: #f9f9f9;
+  margin-top: 8px;
+}
+
+.resumo-pedido {
+  text-align: left;
+  background: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.resumo-pedido ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resumo-pedido li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.acoes-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+  border: none;
+  border-radius: 25px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7b2cbf, #f7aef8);
+  color: white;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #f7aef8, #7b2cbf);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.pedido-confirmado {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.success-emoji {
+  font-size: 3rem;
+}
+/* ==== ESTILOS DO CARRINHO ==== */
+.carrinho-container {
+  max-width: 700px;
+  margin: 100px auto;
+  background: white;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.carrinho-container h2 {
+  font-size: 1.8em;
+  color: #7a2cc2;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+  background: linear-gradient(135deg, #f9e8ff, #fff);
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 15px;
+  font-weight: 500;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#lista-carrinho li button.remover {
+  background: transparent;
+  border: none;
+  color: #ff4b4b;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#total {
+  font-size: 1.3em;
+  color: #7a2cc2;
+  margin-bottom: 25px;
+}
+
+.botoes-carrinho {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d977f3, #a855f7);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(217, 119, 243, 0.7);
+}
+
+.btn-secondary {
+  background: #f3e8ff;
+  border: 2px solid #a855f7;
+  color: #6b21a8;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #e9d5ff;
+  transform: scale(1.05);
+}
+
+/* Texto de carrinho vazio */
+.pedido-confirmado {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #7a2cc2;
+}
+
+.success-emoji {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
