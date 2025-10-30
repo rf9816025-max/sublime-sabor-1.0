@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento - Sublime Sabor 🍬</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="imagens/logo1.png" alt="Logo Sublime Sabor" class="logo">
+  </header>
+
+  <main class="pagamento-container">
+    <h2>Finalize seu Pedido 💜</h2>
+
+    <div class="pix-box">
+      <h3>Chave PIX:</h3>
+      <div class="pix-row">
+        <span id="pix-key">kevilynwenderson12@gmail.com</span>
+        <button id="copiar-pix">📋 Copiar</button>
+      </div>
+      <p class="pix-info">Ou use o número: <strong>+55 31 99834-5514</strong></p>
+      <p class="pix-note">Após efetuar o pagamento, envie o comprovante no WhatsApp.</p>
+    </div>
+
+    <div class="resumo-pedido">
+      <h3>🧾 Seu Pedido</h3>
+      <ul id="lista-pagamento"></ul>
+      <p id="total-pagamento"></p>
+    </div>
+
+    <div class="acoes-pagamento">
+      <button id="btn-finalizar" class="btn-primary">✅ Finalizar Pedido via WhatsApp</button>
+      <button id="btn-voltar" class="btn-secondary">⬅️ Continuar Comprando</button>
+    </div>
+
+    <div id="pedido-confirmado" class="pedido-confirmado" hidden>
+      <div class="success-emoji">🎉</div>
+      <h3>Pedido Realizado!</h3>
+      <p>Obrigado! Aguarde nosso contato e envie o comprovante via WhatsApp 💬.</p>
+      <button id="btn-fechar" class="btn-primary">Fechar</button>
+    </div>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const lista = document.getElementById("lista-pagamento");
+    const total = document.getElementById("total-pagamento");
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    const pixKey = document.getElementById("pix-key");
+    const copiarBtn = document.getElementById("copiar-pix");
+
+    let soma = 0;
+    lista.innerHTML = "";
+
+    carrinho.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nome} (${item.sabor}) — ${item.preco}`;
+      lista.appendChild(li);
+
+      const valor = parseFloat(item.preco.replace("R$", "").replace(",", "."));
+      soma += valor;
+    });
+
+    total.innerHTML = `<strong>Total: R$ ${soma.toFixed(2).replace(".", ",")}</strong>`;
+
+    copiarBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(pixKey.textContent);
+      copiarBtn.textContent = "✅ Copiado!";
+      setTimeout(() => (copiarBtn.textContent = "📋 Copiar"), 2000);
+    });
+
+    document.getElementById("btn-voltar").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+
+    document.getElementById("btn-finalizar").addEventListener("click", () => {
+      const texto = `🍬 *Pedido Sublime Sabor* 🍬%0A%0A` +
+        carrinho.map(i => `• ${i.nome} (${i.sabor}) — ${i.preco}`).join("%0A") +
+        `%0A%0A💰 *Total:* R$ ${soma.toFixed(2).replace(".", ",")}%0A📩 Enviando comprovante do PIX!`;
+
+      const numero = "5531998345514";
+      window.open(`https://wa.me/${numero}?text=${texto}`, "_blank");
+
+      document.getElementById("pedido-confirmado").hidden = false;
+      localStorage.removeItem("carrinho");
+    });
+
+    document.getElementById("btn-fechar").addEventListener("click", () => {
+      document.getElementById("pedido-confirmado").hidden = true;
+      window.location.href = "index.html";
+    });
+  });
+  </script>
+</body>
+</html>
